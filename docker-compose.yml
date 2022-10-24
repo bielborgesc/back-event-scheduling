@@ -1,35 +1,33 @@
 version: '3.8'
 
+services:
+  mysqldb:
+    image: mysql:5.7
+    restart: always
+    env_file: ./.env
+    environment:
+      - MYSQL_ROOT_PASSWORD=$TYPEORM_PASSWORD
+      - MYSQL_DATABASE=$TYPEORM_DATABASE
+    ports:
+      - $TYPEORM_PORT:$DOCKER_PORT_MYSQL
+    volumes:
+      - db:/var/lib/mysql
+  app:
+    depends_on:
+      - mysqldb
+    build: .
+    restart: always
+    env_file: ./.env
+    ports:
+      - $PORT:$NEST_DOCKER_PORT
+    environment:
+      - DB_HOST=TYPEORM_HOST
+      - DB_USER=$TYPEORM_USERNAME
+      - DB_PASSWORD=$TYPEORM_PASSWORD
+      - DB_NAME=$TYPEORM_DATABASE
+      - DB_PORT=$TYPEORM_PORT
+    stdin_open: true
+    tty: true
 
-
-# services:
-#   mysqldb:
-#     image: mysql:5.7
-#     restart: always
-#     env_file: ./.env
-#     environment:
-#       - MYSQL_ROOT_PASSWORD=$TYPEORM_PASSWORD
-#       - MYSQL_DATABASE=$TYPEORM_DATABASE
-#     ports:
-#       - $TYPEORM_PORT:$DOCKER_PORT_MYSQL
-#     volumes:
-#       - db:/var/lib/mysql
-#   app:
-#     depends_on:
-#       - mysqldb
-#     build: .
-#     restart: always
-#     env_file: ./.env
-#     ports:
-#       - $PORT:$NEST_DOCKER_PORT
-#     environment:
-#       - DB_HOST=TYPEORM_HOST
-#       - DB_USER=$TYPEORM_USERNAME
-#       - DB_PASSWORD=$TYPEORM_PASSWORD
-#       - DB_NAME=$TYPEORM_DATABASE
-#       - DB_PORT=$TYPEORM_PORT
-#     stdin_open: true
-#     tty: true
-
-# volumes: 
-#   db:
+volumes: 
+  db:
