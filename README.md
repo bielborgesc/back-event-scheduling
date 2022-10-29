@@ -1,73 +1,51 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+## Descrição
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+O Event Scheduling é um agendador de eventos com suporte a convites. Através dessa aplicação é possivel gerenciar seus próprios eventos compostos por: nome, data de inicio e data de fim. Cada usuário possuí seus próprios eventos, mas nada impede de convidar outros usuários para os seus eventos. A aplicação tem suporte a convite para vários usuários inscritos na aplicação, lembre se que todos os convites são criados com um estado "pendente", e o usuário que você convidou, precisar aceitar esse convite.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Nessa aplicação utilizamos:
 
-## Description
+  -> Linguagem de programação: TypeScrip
+  -> Framework Node: NestJs
+  -> ORM -> TypeOrm
+  -> Banco de Dados: MySQL
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Configurando Banco de Dados
 
-## Installation
+Para evitar erros, resolvemos não exigir a utilização do docker-compose nessa etapa. Então será necessário fazer algumas configurações iniciais.
 
+1° Caso não tenha instalado o MySQL, siga o manual de instalação: https://dev.mysql.com/doc/mysql-getting-started/en/ <br>
+2° Depois de instalado e configurado, crie a base de dados no seu banco de dados com o seguinte comando:
+
+```bash
+ CREATE DATABASE event_scheduling;
+```
+Pronto, agora o seu banco já está apto a receber as tabelas pelo TypeORM.
+
+## Instalação das dependências
+
+Agora abra o terminal no mesmo nivel da aplicação para instalar as dependências, execute o seguinte comando no seu terminal: 
 ```bash
 $ npm install
 ```
 
-## Running the app
+## Para rodar a aplicação
 
+Vamos agora rodar a aplicação. Abra primeiro o arquivo '.env' que está no primeiro nivel de pastas da aplicação. Nele você precisará preencher os campos:
+
+TYPEORM_HOST= <i>Coloque aqui o seu host, caso esteja rodando o mysql localmente é só colocar LOCALHOST</i>
+TYPEORM_USERNAME= <i>Aqui é o username do seu banco de dados, caso você não tenha mudado na instalação, basta colocar o nome root</i>
+TYPEORM_PASSWORD= <i>Aqui precisa ser inserido a senha para conectar ao seu banco de daos</i>
+
+As outra informações já veem préviamente preenchidas pois são padrões, mas caso elas sejam diferentes das suas, fique a vontade para mudar.
+
+Depois de instalar todas as dependência e configurar o arquivo de conexão com o banco de dados, rode o seguinte comando:
 ```bash
-# development
 $ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
 ```
+## Endpoits da aplicação
 
-## Test
+Para facilitar os seus testes, disponibilizamos um arquivo de testes no Postman, que pode ser instalado no seguinte link: https://www.postman.com/bold-crescent-5117/workspace/public-works/collection/17256975-65cc41c5-eb90-4f8f-ab33-cb8c66b184b5?action=share&creator=17256975
 
-```bash
-# unit tests
-$ npm run test
 
-# e2e tests
-$ npm run test:e2e
 
-# test coverage
-$ npm run test:cov
-```
 
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
