@@ -1,51 +1,52 @@
-## Descrição
 
-O Event Scheduling é um agendador de eventos com suporte a convites. Através dessa aplicação é possivel gerenciar seus próprios eventos compostos por: nome, data de inicio e data de fim. Cada usuário possuí seus próprios eventos, mas nada impede de convidar outros usuários para os seus eventos. A aplicação tem suporte a convite para vários usuários inscritos na aplicação, lembre se que todos os convites são criados com um estado "pendente", e o usuário que você convidou, precisar aceitar esse convite.
+### :heavy_check_mark: FINISHED
+#### :green_book: [API] Event Scheduling
+# :heavy_dollar_sign: Event Scheduling
 
-Nessa aplicação utilizamos:
+## :date: Objective
+Event Scheduling is an event scheduler with invitation support. Through this application, it's possible to manage your own events consisting of: name, start date, and end date. Each user has their own events, but there's nothing stopping them from inviting other users to their events. The application supports inviting multiple users registered in the application. Remember that all invitations are created with a "pending" status, and the user you invited needs to accept this invitation.
 
-  -> Linguagem de programação: TypeScrip
-  -> Framework Node: NestJs
-  -> ORM -> TypeOrm
-  -> Banco de Dados: MySQL
+## :computer: Development
+* In this application, we use:
+-> Programming Language: TypeScript -> Node Framework: NestJS -> ORM: TypeORM -> Database: MySQL.
+To avoid errors, we decided not to require the use of docker-compose at this stage. So, some initial configurations are necessary.
 
-## Configurando Banco de Dados
-
-Para evitar erros, resolvemos não exigir a utilização do docker-compose nessa etapa. Então será necessário fazer algumas configurações iniciais.
-
-1° Caso não tenha instalado o MySQL, siga o manual de instalação: https://dev.mysql.com/doc/mysql-getting-started/en/ <br>
-2° Depois de instalado e configurado, crie a base de dados no seu banco de dados com o seguinte comando:
+* 1st If you haven't installed MySQL, follow the installation manual: [MySQL Installation Manual](https://dev.mysql.com/doc/mysql-getting-started/en/)
+* 2nd After installation and configuration, create the database in your database with the following command:
 
 ```bash
- CREATE DATABASE event_scheduling;
+CREATE DATABASE event_scheduling;
 ```
-Pronto, agora o seu banco já está apto a receber as tabelas pelo TypeORM.
+* Now, your database is ready to receive tables via TypeORM.
 
-## Instalação das dependências
+### Installing Dependencies
 
-Agora abra o terminal no mesmo nivel da aplicação para instalar as dependências, execute o seguinte comando no seu terminal: 
+* Now open the terminal at the same level as the application to install the dependencies, execute the following command in your terminal:
 ```bash
 $ npm install
 ```
 
-## Para rodar a aplicação
+## :arrow_forward: Run the code
+* Let's now run the application. First, open the '.env' file that is at the root level of the application. There you will need to fill in the fields:
 
-Vamos agora rodar a aplicação. Abra primeiro o arquivo '.env' que está no primeiro nivel de pastas da aplicação. Nele você precisará preencher os campos:
+* TYPEORM_HOST= <i>Put your host here, if you're running MySQL locally, just put LOCALHOST</i>
+TYPEORM_USERNAME= <i>Here is your database username, if you haven't changed it during installation, just put root</i>
+TYPEORM_PASSWORD= <i>Here you need to insert the password to connect to your database</i>
 
-TYPEORM_HOST= <i>Coloque aqui o seu host, caso esteja rodando o mysql localmente é só colocar LOCALHOST</i>
-TYPEORM_USERNAME= <i>Aqui é o username do seu banco de dados, caso você não tenha mudado na instalação, basta colocar o nome root</i>
-TYPEORM_PASSWORD= <i>Aqui precisa ser inserido a senha para conectar ao seu banco de daos</i>
+* The other information is already pre-filled because they are defaults, but if they are different from yours, feel free to change them.
 
-As outra informações já veem préviamente preenchidas pois são padrões, mas caso elas sejam diferentes das suas, fique a vontade para mudar.
-
-Depois de instalar todas as dependência e configurar o arquivo de conexão com o banco de dados, rode o seguinte comando:
+* After installing all dependencies and configuring the database connection file, run the following command:
 ```bash
 $ npm run start
 ```
-## Endpoits da aplicação
+### Application Endpoints
 
-Para facilitar os seus testes, disponibilizamos um arquivo de testes no Postman, que pode ser instalado no seguinte link: https://www.postman.com/bold-crescent-5117/workspace/public-works/collection/17256975-65cc41c5-eb90-4f8f-ab33-cb8c66b184b5?action=share&creator=17256975
-
-
+* To facilitate your tests, we have provided a Postman test file, which can be installed at the following link: [Postman Test File](https://www.postman.com/bold-crescent-5117/workspace/public-works/collection/17256975-65cc41c5-eb90-4f8f-ab33-cb8c66b184b5?action=share&creator=17256975)
 
 
+## :heavy_check_mark: Concluding
+  The main objective of this application is to be an API for the interface found in the repository: [front-event-scheduling](https://github.com/bielborgesc/front-event-scheduling). We are using a REST architecture to communicate with the frontend.
+  
+## :raising_hand_man: Developer
+
+Gabriel Carvalho
