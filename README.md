@@ -1,9 +1,9 @@
 
 ### :heavy_check_mark: FINISHED
 #### :green_book: [API] Event Scheduling
-# :heavy_dollar_sign: Event Scheduling
+# :date: Event Scheduling
 
-## :date: Objective
+## :mag: Objective
 Event Scheduling is an event scheduler with invitation support. Through this application, it's possible to manage your own events consisting of: name, start date, and end date. Each user has their own events, but there's nothing stopping them from inviting other users to their events. The application supports inviting multiple users registered in the application. Remember that all invitations are created with a "pending" status, and the user you invited needs to accept this invitation.
 
 ## :computer: Development
